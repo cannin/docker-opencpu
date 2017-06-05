@@ -12,6 +12,10 @@ RUN \
   apt-get autoremove -y && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# INSTALL ADDITIONAL TOOLS
+RUN apt-get update
+RUN apt-get install -y curl htop wget
+
 # PORTS
 EXPOSE 80
 EXPOSE 443
