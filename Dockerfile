@@ -1,4 +1,4 @@
-FROM cannin/r-base:ubuntu-14.04.4_r-3.3.2_java-8
+FROM cannin/r-base:ubuntu-16.04_r-3.4.1_java-8
 
 ## Define versions required:
 ENV VERSION_OPENCPU 1.6
@@ -23,3 +23,5 @@ EXPOSE 8004
 
 # COMMAND
 CMD service opencpu restart && tail -F /var/log/opencpu/apache_access.log
+
+#RM
