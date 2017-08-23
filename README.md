@@ -9,6 +9,7 @@ docker build -t cannin/opencpu:opencpu-1.6 .
 ## Custom Install
 ```
 docker build -t cannin/opencpu:enrichmentmap -f Dockerfile_enrichmentmap .
+docker pull cannin/opencpu:enrichmentmap
 ```
 
 # Run
@@ -19,7 +20,7 @@ docker rm -f oc; docker run --name oc -it -p 80:80 -p 8004:8004 cannin/opencpu b
 docker exec -it oc bash
 ```
 
-## Custom
+## Custom Container
 ```
 docker rm -f oc; docker run --name oc -t -p 80:80 -p 8004:8004 cannin/opencpu:enrichmentmap
 docker rm -f oc; docker run --name oc -it -p 80:80 -p 8004:8004 cannin/opencpu:enrichmentmap bash
@@ -40,10 +41,27 @@ curl http://public.opencpu.org/ocpu/tmp/x09e692cd2c/files/DESCRIPTION
 ```
 
 ## Local/Custom Package
+### Generate a table with a set number of rows/columns
 ```
 curl http://localhost/ocpu/library/enrichmentmap/R/getMatrix/json -d "n=100&r=10&c=10"
+```
+
+### Call command that creates JSON file
+```
 curl http://localhost/ocpu/library/enrichmentmap/R/getJson -d "saveFile=TRUE"
+```
+
+### Access JSON file
+* NOTE: The ID "x06ee947c11" will change. The output from getJson will specify the ID.
+```
 curl http://localhost/ocpu/tmp/x06ee947c11/R/.val/print
 curl http://localhost/ocpu/tmp/x06ee947c11/files/example.json
-curl http://localhost/ocpu/tmp/x06ee947c11/files/DESCRIPTION
+```
+
+### Access JSON output from function 
+The output from x can be parsed using JSON.parse()
+* NOTE: Without parameters the function is returned
+```
+x = curl http://localhost/ocpu/library/enrichmentmap/R/getJsonStr/json -d "p=0"
+JSON.parse(x)
 ```

@@ -1,0 +1,13 @@
+FROM cannin/opencpu:opencpu-1.6
+
+# EXTRAS
+COPY extdata/enrichmentmap_0.0.7.tar.gz enrichmentmap_0.0.7.tar.gz
+RUN R -e 'install.packages("enrichmentmap_0.0.7.tar.gz", repos = NULL, type="source")'
+
+# PORTS
+EXPOSE 80
+EXPOSE 443
+EXPOSE 8004
+
+# COMMAND
+CMD service opencpu restart && tail -F /var/log/opencpu/apache_access.log
