@@ -1,5 +1,10 @@
 FROM cannin/opencpu:opencpu-1.6
 
+COPY r-requirements.txt /
+COPY installPackages.R /
+COPY runInstallPackages.R /
+RUN R -e 'source("runInstallPackages.R")'
+
 # EXTRAS
 COPY extdata/enrichmentmap_0.0.7.tar.gz enrichmentmap_0.0.7.tar.gz
 RUN R -e 'install.packages("enrichmentmap_0.0.7.tar.gz", repos = NULL, type="source")'
