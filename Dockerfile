@@ -6,7 +6,7 @@ ENV VERSION_OPENCPU 2.0
 # INSTALL
 RUN \
   add-apt-repository -y ppa:opencpu/opencpu-${VERSION_OPENCPU} && \
-  #apt-get update && \
+  apt-get update && \
   apt-get install -y --no-install-recommends opencpu && \
   apt-get clean autoclean && \
   apt-get autoremove -y && \
