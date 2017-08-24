@@ -1,4 +1,4 @@
-FROM cannin/opencpu:opencpu-1.6
+FROM cannin/opencpu:opencpu-2.0
 
 COPY r-requirements.txt /
 COPY installPackages.R /
