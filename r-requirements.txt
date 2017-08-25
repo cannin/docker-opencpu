@@ -1,3 +1,8 @@
+tibble
+igraph
+magrittr
+dplyr
+jsonlite
 tm
 BioPAX/paxtoolsr
 cytoscape/r-cytoscape.js

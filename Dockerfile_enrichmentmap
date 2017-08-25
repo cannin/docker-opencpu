@@ -6,8 +6,8 @@ COPY runInstallPackages.R /
 RUN R -e 'source("runInstallPackages.R")'
 
 # EXTRAS
-COPY extdata/enrichmentmap_0.0.7.tar.gz enrichmentmap_0.0.7.tar.gz
-RUN R -e 'install.packages("enrichmentmap_0.0.7.tar.gz", repos = NULL, type="source")'
+COPY extdata/enrichmentmap_0.1.2.tar.gz enrichmentmap_0.1.2.tar.gz
+RUN R -e 'install.packages("enrichmentmap_0.1.2.tar.gz", repos = NULL, type="source")'
 
 # PORTS
 EXPOSE 80
@@ -15,4 +15,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # COMMAND
-CMD service opencpu restart && tail -F /var/log/opencpu/apache_access.log
+CMD apachectl -DFOREGROUND

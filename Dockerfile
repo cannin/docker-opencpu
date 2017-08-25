@@ -1,6 +1,6 @@
 FROM cannin/r-base:ubuntu-16.04_r-3.4.1_java-8
 
-# No prompts
+# No interactive prompts
 ENV DEBIAN_FRONTEND noninteractive
 
 ## Define versions required:
