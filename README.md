@@ -71,10 +71,8 @@ JSON.parse(x)
 # Run getEnrichmentMap
 ## Test
 * Test at this URL: http://127.0.0.1/ocpu
+* URL: ../library/enrichmentmap/R/getEnrichmentMap/json
+* Parameter: genes: ["BRAF", "MDM2", "TP53"]
+* Request type: POST
 
 ![ocpu](ocpu.png)
-
-```
-URL: ../library/enrichmentmap/R/getEnrichmentMap/json
-genes: ["BRAF", "MDM2", "TP53"]
-```
