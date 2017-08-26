@@ -3,7 +3,8 @@
 # Build
 ## Default
 ```
-docker build -t cannin/opencpu:opencpu-1.6 .
+docker build -t cannin/opencpu:opencpu-2.0 .
+docker build -t cannin/opencpu:enrichmentmap -f Dockerfile_enrichmentmap .
 ```
 
 ## Custom Install
@@ -22,7 +23,8 @@ docker exec -it oc bash
 
 ## Custom Container
 ```
-docker rm -f oc; docker run --name oc -t -p 80:80 -p 8004:8004 cannin/opencpu:enrichmentmap
+# SKIP: docker rm -f oc; docker run --name oc -t -p 80:80 -p 8004:8004 cannin/opencpu:enrichmentmap
+docker rm -f oc; docker run --name oc -it -p 80:80 -p 8004:8004 cannin/opencpu:enrichmentmap apache2ctl -D FOREGROUND
 docker rm -f oc; docker run --name oc -it -p 80:80 -p 8004:8004 cannin/opencpu:enrichmentmap bash
 docker exec -it oc bash
 ```
@@ -58,10 +60,21 @@ curl http://localhost/ocpu/tmp/x06ee947c11/R/.val/print
 curl http://localhost/ocpu/tmp/x06ee947c11/files/example.json
 ```
 
-### Access JSON output from function 
+### Access JSON output from function
 The output from x can be parsed using JSON.parse()
 * NOTE: Without parameters the function is returned
 ```
 x = curl http://localhost/ocpu/library/enrichmentmap/R/getJsonStr/json -d "p=0"
 JSON.parse(x)
+```
+
+# Run getEnrichmentMap
+## Test
+* Test at this URL: http://127.0.0.1/ocpu
+
+![ocpu](ocpu.png)
+
+```
+URL: ../library/enrichmentmap/R/getEnrichmentMap/json
+genes: ["BRAF", "MDM2", "TP53"]
 ```

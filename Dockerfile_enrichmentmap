@@ -6,8 +6,8 @@ COPY runInstallPackages.R /
 RUN R -e 'source("runInstallPackages.R")'
 
 # EXTRAS
-COPY extdata/enrichmentmap_0.1.2.tar.gz enrichmentmap_0.1.2.tar.gz
-RUN R -e 'install.packages("enrichmentmap_0.1.2.tar.gz", repos = NULL, type="source")'
+COPY extdata/enrichmentmap_0.1.4.tar.gz enrichmentmap_0.1.4.tar.gz
+RUN R -e 'install.packages("enrichmentmap_0.1.4.tar.gz", repos = NULL, type="source")'
 
 # PORTS
 EXPOSE 80
